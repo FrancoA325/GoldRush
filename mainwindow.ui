@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1027</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Suspension Calculator</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>6</y>
+      <width>1116</width>
+      <height>587</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_5">
+     <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Front Suspension</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Rear Suspension</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout1">
+             <item>
+              <widget class="QLabel" name="front_spring_rate_label">
+               <property name="text">
+                <string>Front Spring Rate (lb/in)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="front_spring_rate_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout2">
+             <item>
+              <widget class="QLabel" name="front_target_roll_stiffness_label">
+               <property name="text">
+                <string>Target Front Roll Stiffness (lb-ft/deg)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="front_target_roll_stiffness_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout3">
+             <item>
+              <widget class="QLabel" name="front_motion_ratio_label">
+               <property name="text">
+                <string>Front Spring/Damper Motion Ratio</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="front_motion_ratio_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout4">
+             <item>
+              <widget class="QLabel" name="front_arb_motion_ratio_label">
+               <property name="text">
+                <string>Front ARB Motion Ratio</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="front_arb_motion_ratio_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="front_roll_stiffness_spring_input">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Front Roll Stiffness From Spring (lb-ft/deg)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="front_roll_stiffness_needed_input">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Front Roll Stiffness Needed From ARB (lb-ft/deg)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="1">
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout5">
+             <item>
+              <widget class="QLabel" name="rear_motion_ratio_label">
+               <property name="text">
+                <string>Rear Spring/Damper Motion Ratio</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="rear_motion_ratio_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout6">
+             <item>
+              <widget class="QLabel" name="rear_spring_rate_label">
+               <property name="text">
+                <string>Rear Spring Rate (lb/in)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="rear_spring_rate_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout7">
+             <item>
+              <widget class="QLabel" name="rear_target_roll_stiffness_label">
+               <property name="text">
+                <string>Target Rear Roll Stiffness (lb-ft/deg)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="rear_target_roll_stiffness_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout8">
+             <item>
+              <widget class="QLabel" name="rear_arb_motion_ratio_label">
+               <property name="text">
+                <string>Rear ARB Motion Ratio</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="rear_arb_motion_ratio_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="rear_roll_stiffness_spring_input">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Rear Roll Stiffness From Spring (lb-ft/deg)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="rear_roll_stiffness_needed_input">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Rear Roll Stiffness Needed from ARB (lb-ft/deg)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Static Vehicle Mass Properties</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Static Geometry Properties</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout9">
+             <item>
+              <widget class="QLabel" name="rf_weight_label">
+               <property name="text">
+                <string>Static RF Weight (lb)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="rf_weight_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout10">
+             <item>
+              <widget class="QLabel" name="lf_weight_label">
+               <property name="text">
+                <string>Static LF Weight (lb)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lf_weight_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout11">
+             <item>
+              <widget class="QLabel" name="lr_weight_label">
+               <property name="text">
+                <string>Static LR Weight (lb)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lr_weight_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout12">
+             <item>
+              <widget class="QLabel" name="rr_weight_label">
+               <property name="text">
+                <string>Static RR Weight (lb)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="rr_weight_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout13">
+             <item>
+              <widget class="QLabel" name="front_axle_weight_label">
+               <property name="text">
+                <string>Front Axle Weight (lb)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="front_axle_weight_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout14">
+             <item>
+              <widget class="QLabel" name="rear_axle_weight_label">
+               <property name="text">
+                <string>Rear Axle Weight (lb)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="rear_axle_weight_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout15">
+             <item>
+              <widget class="QLabel" name="total_weight_label">
+               <property name="text">
+                <string>Total Vehicle Weight (lb)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="total_weight_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="Front_Weight_per">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Front Weight Percentage</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="Cross_Weight_per">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Cross Weight Percentage</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="3" column="1">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout18">
+             <item>
+              <widget class="QLabel" name="front_trackwidth_label">
+               <property name="text">
+                <string>Front Trackwidth (in)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="front_trackwidth_input">
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout19">
+             <item>
+              <widget class="QLabel" name="rear_trackwidth_label">
+               <property name="text">
+                <string>Rear Trackwidth (in)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="rear_trackwidth_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout20">
+             <item>
+              <widget class="QLabel" name="wheelbase_label">
+               <property name="text">
+                <string>Wheelbase (in)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="wheelbase_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout21">
+             <item>
+              <widget class="QLabel" name="static_front_rc_height_label">
+               <property name="text">
+                <string>Static Front RC Height (in)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="static_front_rc_height_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout22">
+             <item>
+              <widget class="QLabel" name="static_rear_rc_height_label">
+               <property name="text">
+                <string>Static Rear RC Height (in)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="static_rear_rc_height_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout23">
+             <item>
+              <widget class="QLabel" name="cog_height_label">
+               <property name="text">
+                <string>CoG Height (in)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cog_height_input"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="COG_front_axle">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>COG to Rear Axle (in)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="COG_front_axle_2">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>COG to Fron Axle (in)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="1">
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Roll Stiffess Distrobution</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QLabel" name="Front_roll_dist">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Front Roll Stiffness Distrobution</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="rear_roll_dist">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Rear Roll Stiffness Distrobution</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>TLLTD</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QLabel" name="LLTD_front">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Total Lateral Load Transfer Dist. Front</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="LLTD_rear">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Total Lateral Load Transfer Dist. Rear</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>Roll Stiffess Gradient</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <item>
+            <widget class="QLabel" name="Roll_gradient">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Roll Gradient (deg of body roll/lateral acceleration)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Lateral Load Transfer Gradient</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <widget class="QLabel" name="LLT_front">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Front Lateral Load Transfer per unit Lateral Accel (lbs/g)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="LLT_rear">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Rear Lateral Load Transfer per unit Lateral Accel (lbs/g)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="8" column="0">
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>Misc ARB Calculations</string>
+           </property>
+          </widget>
+         </item>
+         <item row="9" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <item>
+            <widget class="QLabel" name="Rolling_lever_arm">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Rolling Moment Lever Arm (in)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="Rolling_Moment">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Rolling Moment (lb-ft/g)</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="10" column="0">
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>Chassis Stifness Front Recomendation</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_10">
+           <item>
+            <widget class="QLabel" name="Chassis_stiffness_front">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Stiffness in lb-ft/deg</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="12" column="0">
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>Chassis Stifness Rear Recomendation</string>
+           </property>
+          </widget>
+         </item>
+         <item row="13" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_11">
+           <item>
+            <widget class="QLabel" name="Chassis_stiffness_rear">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Stiffness in lb-ft/deg</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="14" column="0">
+          <widget class="QLabel" name="label_12">
+           <property name="text">
+            <string>Chassis Stifness Recomendation</string>
+           </property>
+          </widget>
+         </item>
+         <item row="15" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_12">
+           <item>
+            <widget class="QLabel" name="Chassis_stiffness_rear_2">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Stiffness in lb-ft/deg</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="1" column="8" colspan="2">
+        <widget class="QPushButton" name="Chassis_front_button">
+         <property name="text">
+          <string>Front Chassis Calc</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="10">
+        <widget class="QPushButton" name="chassis_stiff_button">
+         <property name="text">
+          <string>Chassis Stiffness Calc</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="2">
+        <widget class="QPushButton" name="Rear_roll_button">
+         <property name="text">
+          <string>Rear Roll Calc</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QPushButton" name="Static_vehicle_mass_button">
+         <property name="text">
+          <string>Static Mass Properties Calc</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3" colspan="3">
+        <widget class="QPushButton" name="Roll_stiff_dist">
+         <property name="text">
+          <string>Roll Stiffness Distrobution</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="7" colspan="2">
+        <widget class="QPushButton" name="misc_arb_calc">
+         <property name="text">
+          <string>Misc ARB Calc</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5" colspan="3">
+        <widget class="QPushButton" name="roll_stiff_grad_button">
+         <property name="text">
+          <string>Roll Stiffness Gradient</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QPushButton" name="TLLTD_button">
+         <property name="text">
+          <string>TLLTD Calc</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="Front_roll_button">
+         <property name="text">
+          <string>Front Roll Calc</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="6">
+        <widget class="QPushButton" name="LLT_grad_button">
+         <property name="text">
+          <string>LLT Gradient Calc</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2" colspan="2">
+        <widget class="QPushButton" name="static_geo_button">
+         <property name="text">
+          <string>Static Geo Calc</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="9" colspan="2">
+        <widget class="QPushButton" name="chassis_stiff_rear_button">
+         <property name="text">
+          <string>Rear Chassis Calc</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1920</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
