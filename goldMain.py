@@ -3,9 +3,9 @@ import numpy as np
 from goldRush import Ui_MainWindow  # Import the auto-generated UI class
 
 class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
-    neededFRS = 0
+    neededFRSSpring = 0
     front_roll_stiffness_arb = 0
-    neededRRS = 0
+    neededRRSSpring = 0
     rear_roll_stiffness_arb = 0
     front_roll_dist = 0
     rear_roll_dist = 0
@@ -18,6 +18,8 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     cog_to_front_axle = 0
     rolling_level_arm = 0
     rolling_moment = 0
+    chassisTSF = 0
+    chassisTSR = 0
 
     def __init__(self, parent=None):
         super(MyMainWindow, self).__init__(parent)
@@ -30,6 +32,10 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.static_geo_button.clicked.connect(self.Static_vehicle_geometry_calculate)
 
         self.misc_arb_calc.clicked.connect(self.misc_arb_calculate)
+
+        self.Chassis_front_button.clicked.connect(self.front_torsional_stiffness)
+        self.chassis_stiff_rear_button.clicked.connect(self.rear_torsional_stiffness)
+        self.chassis_stiff_button.clicked.connect(self.chassis_stiff_both)
 
     def Front_roll_calculate(self):
         self.resetInputStyles()
@@ -60,10 +66,10 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         twf = float(self.front_trackwidth_input.text())
         tfrs = float(self.front_target_roll_stiffness_input.text())
 
-        self.neededFRS = np.around(((1/2) * front_spring_rate * (front_motion_ratio) ** 2 * (twf) ** 2) / (57.2958 * 12), 3)
-        self.front_roll_stiffness_arb = np.around((tfrs - self.neededFRS), 3)
+        self.neededFRSSpring = np.around(((1/2) * front_spring_rate * (front_motion_ratio) ** 2 * (twf) ** 2) / (57.2958 * 12), 3)
+        self.front_roll_stiffness_arb = np.around((tfrs - self.neededFRSSpring), 3)
 
-        self.front_roll_stiffness_spring_input.setText(f"Front Roll Stiffness From Spring: {self.neededFRS}")
+        self.front_roll_stiffness_spring_input.setText(f"Front Roll Stiffness From Spring: {self.neededFRSSpring}")
         self.front_roll_stiffness_needed_input.setText(f"Front Roll Stiffness Needed From ARB: {self.front_roll_stiffness_arb}")
 
     def Rear_roll_calculate(self):
@@ -92,10 +98,10 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         rear_motion_ratio = float(self.rear_motion_ratio_input.text())
         twr = float(self.rear_trackwidth_input.text())
 
-        self.neededRRS = np.around(((1/2) * rear_spring_rate * (rear_motion_ratio) ** 2 * (twr) ** 2) / (57.2958 * 12), 3)
-        self.rear_roll_stiffness_arb = np.around((trrs - self.neededRRS), 3)
+        self.neededRRSSpring = np.around(((1/2) * rear_spring_rate * (rear_motion_ratio) ** 2 * (twr) ** 2) / (57.2958 * 12), 3)
+        self.rear_roll_stiffness_arb = np.around((trrs - self.neededRRSSpring), 3)
 
-        self.rear_roll_stiffness_spring_input.setText(f"Rear Roll Stiffness From Spring: {self.neededRRS}")
+        self.rear_roll_stiffness_spring_input.setText(f"Rear Roll Stiffness From Spring: {self.neededRRSSpring}")
         self.rear_roll_stiffness_needed_input.setText(f"Rear Roll Stiffness Needed From ARB: {self.rear_roll_stiffness_arb}")
     
     def Roll_stiff_dist_calculate(self):
@@ -237,14 +243,52 @@ class MyMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.resetInputStyles()
         error = False
 
-        if not self.neededFRS:
+        if not self.neededFRSSpring:
             error = True
         if not self.front_roll_stiffness_arb:
             error = True
 
+        if error:
+            QtWidgets.QMessageBox.warning(self, "Input Error", "Previous calculations are not done.")
+            return
+        
+        self.chassisTSF = np.around((self.neededFRSSpring - self.front_roll_stiffness_arb) * 10)
+        self.Chassis_stiffness_front.setText(f"Chassis Stiffness Front: {self.chassisTSF}")
+
+    def rear_torsional_stiffness(self):
+        self.resetInputStyles()
+        error = False
+
+        if not self.neededRRSSpring:
+            error = True
+        if not self.rear_roll_stiffness_arb:
+            error = True
+
+        if error:
+            QtWidgets.QMessageBox.warning(self, "Input Error", "Previous calculations are not done.")
+            return
+        
+        self.chassisTSR = np.around((self.neededRRSSpring - self.rear_roll_stiffness_arb) * 10)
+        self.Chassis_stiffness_rear.setText(f"Chassis Stiffness Rear: {self.chassisTSR}")
+    
+    def chassis_stiff_both(self):
+        self.resetInputStyles()
+        error = False
+
+        if not self.chassisTSF:
+            error = True
+        if not self.chassisTSR:
+            error = True
+
+        if error:
+            QtWidgets.QMessageBox.warning(self, "Input Error", "Previous calculations are not done.")
+            return
+        
+        self.chassisTotal = np.around((self.chassisTSF + self.chassisTSR) / 2)
+        self.chassis_stiff_both.setText(f"Chassis Stiffness Rear: {self.chassisTotal}")
+
     def setInputErrorStyle(self, input_field):
         input_field.setStyleSheet("border: 1px solid yellow;")
-
 
     def resetInputStyles(self):
         # Reset the style for all input fields to clear any error state
